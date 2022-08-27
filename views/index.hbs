@@ -26,58 +26,31 @@
 
   <!-- 資料 -->
   <div class="d-flex justify-content-center my-3">
+
     <ul class="list-group w-50">
-      <li class="list-group-item mb-2">
-        <div class="row">
-          <div class="col-auto me-auto">
-            <h4 style="display: inline; vertical-align: middle;" class="mx-2">
-              午餐
-            </h4>
-            <p style="display: inline;">60</p>
-            <p>2022/08/27</p>
+      {{#each records}}
+        <li class="list-group-item mb-2">
+          <div class="row">
+            <div class="col-auto me-auto">
+              <h4 style="display: inline; vertical-align: middle;" class="mx-2">
+                {{ this.name }}
+              </h4>
+              <p style="display: inline;">{{ this.amount }}</p>
+              <p>{{ this.date }}</p>
+            </div>
+            <div class="col-auto d-flex align-items-center">
+              <a class="btn btn-success" href="#">修改</a>
+              <form action="#" style="display: inline;">
+                <button class="btn btn-danger" type="submit">刪除</button>
+              </form>
+            </div>
           </div>
-          <div class="col-auto d-flex align-items-center">
-            <a class="btn btn-success" href="#">修改</a>
-            <form action="#" style="display: inline;">
-              <button class="btn btn-danger" type="submit">刪除</button>
-            </form>
-          </div>
-        </div>
-      </li>
-    
-      <li class="list-group-item mb-2">
-        <div class="row">
-          <div class="col-auto me-auto">
-            <h4 style="display: inline; vertical-align: middle;">
-              午餐
-            </h4>
-          </div>
-          <div class="col-auto">
-            <a class="btn btn-success" href="#">修改</a>
-            <form action="#" style="display: inline;">
-              <button class="btn btn-danger" type="submit">刪除</button>
-            </form>
-          </div>
-        </div>
-      </li>
-    
-      <li class="list-group-item mb-2">
-        <div class="row">
-          <div class="col-auto me-auto">
-            <h4 style="display: inline; vertical-align: middle;">
-              午餐
-            </h4>
-          </div>
-          <div class="col-auto">
-            <a class="btn btn-success" href="#">修改</a>
-            <form action="#" style="display: inline;">
-              <button class="btn btn-danger" type="submit">刪除</button>
-            </form>
-          </div>
-        </div>
-      </li>
+        </li>
+      {{/each}}
     </ul>
+
   </div>
+
 </div>
 
 <div class="text-center">
