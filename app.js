@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const routes = require('./routes')
 require('./config/mongoose') // 引用mongoose 連線設定
@@ -13,6 +14,7 @@ app.set('view engine', 'hbs')
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(routes)
 
 

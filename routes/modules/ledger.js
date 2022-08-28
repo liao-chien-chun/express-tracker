@@ -17,6 +17,7 @@ router.post('/new', (req, res) => {
     .catch(err => console.log(err))
   })
 
+// edit頁面
 router.get('/:id/edit', (req, res) => {
   let _id = req.params.id
   Record.findOne({ _id })
@@ -24,6 +25,15 @@ router.get('/:id/edit', (req, res) => {
     .then(record => res.render('edit', { record }))
     .catch(err => console.log(err))
 })
+
+// 更新資料路由
+router.put('/:id', (req, res) => {
+  const _id = req.params.id
+  return Record.findOneAndUpdate({ _id }, { ...req.body })
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
 
 
 
