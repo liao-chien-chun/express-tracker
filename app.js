@@ -22,7 +22,12 @@ app.use(session({
 }))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-usePassport(app) 
+usePassport(app)  // 使用驗證機制
+app.use((req, res, next) => {   // 設定本地變數 res.locals
+  res.locals.isAuthenticated = req.isAuthenticated() // 驗證會回傳true or false
+  res.locals.user = req.user  // 使用者資料交接給 res使用
+  next()
+})
 app.use(routes)
 
 
