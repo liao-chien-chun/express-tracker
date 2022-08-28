@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 
 const routes = require('./routes')
 require('./config/mongoose') // 引用mongoose 連線設定
+const usePassport = require('./config/passport')
 
 const app = express()
 const PORT = 3001
@@ -21,6 +22,7 @@ app.use(session({
 }))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+usePassport(app) 
 app.use(routes)
 
 
