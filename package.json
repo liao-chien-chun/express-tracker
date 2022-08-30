@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "seed2": "node models/seeds/recordSeeder.js",
     "seed": "node models/seeds/categorySeeder.js",
     "start": "node app.js",
     "dev": "nodemon app.js",
