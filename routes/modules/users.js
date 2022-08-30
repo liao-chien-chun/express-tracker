@@ -21,14 +21,31 @@ router.get('/register', (req, res) => {
 // 送出註冊
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
+  if (!name || !email || !password || !confirmPassword) {
+    errors.push({ message: '所有欄位都要填寫'})
+  }
+  if (password !== confirmPassword) {
+    errors.push({ message: '密碼不相符合！'})
+  }
+  if (errors.length) {
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword
+    })
+  }
 
   // 檢查是否註冊
   User.findOne({ email })
     .then(user => {
       // 已經註冊過了
       if (user) {
-        console.log('this email already exists.')
+        errors.push({ message: "此 Email 已經註冊過了"})
         res.render('register', {
+          errors,
           name, 
           email, 
           password, 
@@ -50,6 +67,7 @@ router.post('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success_msg', '您已成功登出')
   res.redirect('/users/login')
 })
 
