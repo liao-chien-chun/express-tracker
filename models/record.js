@@ -11,12 +11,14 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  categoryId: {
+  amount: {
     type: Number,
     required: true
   },
-  amount: {
-    type: Number,
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+    index: true,
     required: true
   },
   userId: {  // 關聯使用者
