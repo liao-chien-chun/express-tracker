@@ -1,3 +1,10 @@
+{{#if error }}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ error }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{{/if}}
+
 {{#if errors }}
   {{#each errors}}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -6,7 +13,6 @@
     </div>
   {{/each}}
 {{/if}}
-
 
 {{#if success_msg }}
   <div class="alert alert-warning alert-dismissible fade show" role="alert">

@@ -30,6 +30,7 @@ app.use((req, res, next) => {   // 設定本地變數 res.locals
   res.locals.user = req.user  // 使用者資料交接給 res使用
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.error = req.flash('error') // 顯示passport登入策略原本的錯誤訊息設定
   next()
 })
 app.use(routes)
