@@ -31,7 +31,7 @@ db.once('open', () => {
     }))
     .then(user => {
       const userId = user._id
-      return Promise.all(Array.from(SEED_EXPENSE, expense => {
+      Promise.all(Array.from(SEED_EXPENSE, expense => {
         const { name, date, amount, categoryID } = expense
         Category.findOne({ id: categoryID })
           .then(category => {
@@ -45,5 +45,5 @@ db.once('open', () => {
             })
           })
       }))
-    })
+    }) 
 })
