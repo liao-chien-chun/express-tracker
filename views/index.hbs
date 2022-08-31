@@ -1,11 +1,11 @@
 <div class="container mt-3 mx-auto">
 
   <div class="mb-5">
-    <form action="/search" class="auto">
+    <form action="/" class="auto" method="GET">
       <div class="d-flex justify-content-center">
         <div class="input-group w-50">
-          <select class="form-select" aria-label="Default select example">
-            <option>類別</option>
+          <select class="form-select" name="select" id="select" onchange="this.form.submit()">
+            <option>{{title}}</option>
             <option value="1">家局物業</option>
             <option value="2">交通出行</option>
             <option value="3">休閒娛樂</option>
@@ -29,7 +29,7 @@
   <div class="d-flex justify-content-center my-3">
 
     <ul class="list-group w-50">
-      {{#each records}}
+      {{#each records }}
         <li class="list-group-item mb-2">
           <div class="row">
             <div class="col-auto me-auto">
