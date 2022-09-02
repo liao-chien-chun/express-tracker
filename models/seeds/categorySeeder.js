@@ -14,6 +14,7 @@ const CATEGORY = [
 ]
 
 db.once('open', () => {
+  console.log('開始建立分類資料')
   Promise.all(Array.from(CATEGORY, CategorySEED => Category.create(CategorySEED)))
     .then(() => {
       console.log('done')

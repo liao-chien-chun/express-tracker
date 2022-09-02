@@ -4,9 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const MONGODB_URI_TRACKER = process.env.MONGODB_URI_TRACKER
-
-mongoose.connect(MONGODB_URI_TRACKER)
+mongoose.connect(process.env.MONGODB_URI_TRACKER)
 
 const db = mongoose.connection
 
