@@ -20,7 +20,8 @@ router.post('/new', (req, res) => {
     .lean()
     .then(category => {
       const categoryId = category._id
-      return Record.create({ name, date, categoryId, amount, userId})
+      const categoryIcon = category.icon
+      return Record.create({ name, date, categoryId, amount, userId, categoryIcon})
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
     })
