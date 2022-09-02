@@ -27,26 +27,30 @@
 
   <!-- 資料 -->
   <div class="d-flex justify-content-center my-3">
-
     <ul class="list-group w-50">
       {{#each records }}
-        <li class="list-group-item mb-2">
-          <div class="row">
-            <div class="col-auto me-auto">
-              <h4 style="display: inline; vertical-align: middle;" class="mx-2">
-                {{ this.name }}
-              </h4>
-              <p style="display: inline;">{{ this.amount }}</p>
-              <p>{{ this.date }}</p>
+          <li class="list-group-item mb-2 d-flex justify-content-around">
+            <div class="d-flex">
+              <div class="icon mx-2">
+                <i class="" style="font-size: 3rem; color: lightblue;"></i>
+              </div>
+              <div class="d-flex ">
+                <div class="d-flex flex-column me-5">
+                  <span>{{ this.name }}</span>
+                  <span>{{ this.date }}</span>
+                </div>
+                <div class="d-flex align-items-center ms-5">
+                  <span>{{ this.amount }}</span>
+                </div>
+              </div>
             </div>
-            <div class="col-auto d-flex align-items-center">
+            <div class="d-flex align-items-center">
               <a class="btn btn-success mx-2" href="/ledger/{{ this._id }}/edit">修改</a>
               <form action="/ledger/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                 <button class="btn btn-danger" type="submit">刪除</button>
               </form>
             </div>
-          </div>
-        </li>
+          </li>
       {{/each}}
     </ul>
 
