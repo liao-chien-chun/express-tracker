@@ -46,11 +46,13 @@ router.put('/:id', (req, res) => {
   Category.findOne({ id })
     .then(category => {
       const category_id = category._id
+      const categoryIcon = category.icon
       const { name, date, amount } = req.body
       return Record.findOneAndUpdate({ _id, userId }, {
         name,
         date,
         amount,
+        categoryIcon,
         categoryId: category_id
       })
     })

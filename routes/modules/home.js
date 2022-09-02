@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   if(!select) {
     Record.find({ userId })
     .lean()
-    .sort({ _id: 'asc' })
+    .sort({ _id: 'desc' })
     .then(records =>{ 
       records.filter(record => {
         totalAmount += record.amount
