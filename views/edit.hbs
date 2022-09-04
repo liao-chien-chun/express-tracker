@@ -30,7 +30,7 @@
           <div class="mb-5">
             <label class="me-3" for="categoriesId">類別*：</label>
             <select name="categoriesId" id="categoriesId" required>
-              <option value="" selected disabled>selec</option>
+              <option value="{{ category.id }}" >{{ category.name }}</option>
               <option value="1">家局物業</option>
               <option value="2">交通出行</option>
               <option value="3">休閒娛樂</option>

@@ -4,9 +4,7 @@ const router = express.Router()
 // 引入 record model
 const Record = require('../../models/record')
 const Category = require('../../models/category')
-const category = require('../../models/category')
 
-//{ name: 'eric', date: '2022-08-01', category: '4', amount: '2' }
 
 router.get('/new', (req, res) => {
   res.render('new')
@@ -34,18 +32,23 @@ router.get('/:id/edit', (req, res) => {
   Record.findOne({ _id, userId })
     .lean()
     .then(record => {
-      res.render('edit', { record })
+      const categoryId = record.categoryId
+      Category.findOne({ _id: categoryId })
+        .lean()
+        .then(category => {
+          res.render('edit', { record, category })
+        })
     })
 })
 
 // 更新資料路由
 router.put('/:id', (req, res) => {
-  const userId = req.user._id
-  const _id = req.params.id
-  const id = req.body.categoriesId
-  Category.findOne({ id })
+  const userId = req.user._id     // 拿到此登入使用者的_id
+  const _id = req.params.id       // 此筆紀錄的_id
+  const id = req.body.categoriesId  // 拿到category 資料表裡此分類的 id
+  Category.findOne({ id })         // 找出此分類
     .then(category => {
-      const category_id = category._id
+      const category_id = category._id   
       const categoryIcon = category.icon
       const { name, date, amount } = req.body
       return Record.findOneAndUpdate({ _id, userId }, {
