@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
         const categoryId = category._id
         const categoryName = category.name
         let title = categoryName
-        Record.find({ categoryId })
+        Record.find({ categoryId, userId })
           .lean()
           .then(records => {
             records.filter(record => {
